@@ -1,4 +1,5 @@
 ﻿using SaveKids.Domain.Entities.Attachments;
+using SaveKids.Service.DTOs.Crimes;
 
 namespace SaveKids.Service.DTOs.Criminals;
 
@@ -17,4 +18,5 @@ public class CriminalResultDto
     public double Weight { get; set; }
     public string Detail { get; set; }
     public Attachment Attachment { get; set; }
+    public ICollection<CrimeResultDto> Crimes { get; set; }
 }

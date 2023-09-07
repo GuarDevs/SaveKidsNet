@@ -2,7 +2,7 @@
 
 namespace SaveKids.Service.DTOs.Attachments;
 
-public class AttachmentCreationDTO
+public class AttachmentCreationDto
 {
-    public IFormFile
+    public IFormFile FormFile { get; set; }
 }
