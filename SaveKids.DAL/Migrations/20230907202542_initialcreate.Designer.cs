@@ -12,8 +12,8 @@ using SaveKids.DAL.DbContexts;
 namespace SaveKids.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230907131434_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230907202542_initialcreate")]
+    partial class initialcreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
