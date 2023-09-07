@@ -15,54 +15,38 @@ public class UsersController : BaseController
         _userService = userService;
     }
 
-    [HttpGet("GetAll")]
-    public async Task<IActionResult> GetAll([FromQuery] PaginationParams paginationParams)
-        => Ok(await _userService.RetrieveAllAsync(paginationParams));
 
     [HttpPost("Create")]
-    public async Task<IActionResult> Create([FromForm] UserCreationDto dto)
+    public async Task<IActionResult> CreateAsync(UserCreationDto dto)
         => Ok(await _userService.AddAsync(dto));
 
 
-    //// GET: UsersController/Edit/5
-    //public ActionResult Edit(int id)
-    //{
-    //    return View();
-    //}
+    [HttpPut("Update")]
+    public async Task<IActionResult> UpdateAsync(UserUpdateDto dto)
+        => Ok(await _userService.ModifyAsync(dto));
 
-    //// POST: UsersController/Edit/5
-    //[HttpPost]
-    //[ValidateAntiForgeryToken]
-    //public ActionResult Edit(int id, IFormCollection collection)
-    //{
-    //    try
-    //    {
-    //        return RedirectToAction(nameof(Index));
-    //    }
-    //    catch
-    //    {
-    //        return View();
-    //    }
-    //}
 
-    //// GET: UsersController/Delete/5
-    //public ActionResult Delete(int id)
-    //{
-    //    return View();
-    //}
+    [HttpPatch("Delete/{i:long}")]
+    public async Task<IActionResult> DeleteAsync(long id)
+        => Ok(await _userService.RemoveAsync(id));
 
-    //// POST: UsersController/Delete/5
-    //[HttpPost]
-    //[ValidateAntiForgeryToken]
-    //public ActionResult Delete(int id, IFormCollection collection)
-    //{
-    //    try
-    //    {
-    //        return RedirectToAction(nameof(Index));
-    //    }
-    //    catch
-    //    {
-    //        return View();
-    //    }
-    //}
+
+    [HttpDelete("Destroy/{i:long}")]
+    public async Task<IActionResult> DestroyAsync(long id)
+        => Ok(await _userService.DestroyAsync(id));
+
+
+    [HttpGet("GetById")]
+    public async Task<IActionResult> GetByIdAsync(long id)
+        => Ok(await _userService.RetrieveByIdAsync(id));
+
+
+    [HttpGet("GetAll")]
+    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationParams paginationParams)
+        => Ok(await _userService.RetrieveAllAsync(paginationParams));
+
+
+    [HttpGet("GetByEmailAndPassword")]
+    public async Task<IActionResult> GetByEmailAndPassword(string email, string password)
+        => Ok(await _userService.RetrieveByEmailAndPasswordAsync(email, password));
 }
