@@ -3,7 +3,7 @@ using SaveKids.Service.DTOs.Crimes;
 
 namespace SaveKids.Service.Interfaces;
 
-public interface CrimeCategoryService
+public interface ICrimeService
 {
     Task<CrimeResultDto> AddAsync(CrimeCreationDto dto);
     Task<CrimeResultDto> ModifyAsync(CrimeUpdateDto dto);
