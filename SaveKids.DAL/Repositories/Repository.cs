@@ -3,6 +3,7 @@ using SaveKids.DAL.DbContexts;
 using SaveKids.DAL.IRepositories;
 using SaveKids.Domain.Commons;
 using System.Linq.Expressions;
+using System.Reflection.Metadata;
 
 namespace SaveKids.DAL.Repositories;
 
@@ -18,7 +19,6 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
 
     public async Task AddAsync(TEntity entity)
     {
-        entity.CreatedAt = DateTime.UtcNow;
         await dbSet.AddAsync(entity);
     }
 
