@@ -68,7 +68,7 @@ public class CrimeCategoryService : ICrimeCategoryService
 
     public async Task<CrimeCategoryResultDto> RetrieveByIdAsync(long id)
     {
-        var existCriminalCategory = await repository.GetAsync(c => c.Id.Equals(id));
+        var existCriminalCategory = await repository.GetAsync(c => c.Id.Equals(id), includes: new[] { "Crimes" });
 
         if (existCriminalCategory is null)
             throw new NotFoundException($"This criminal category was not found with Id = {id}");
@@ -78,7 +78,7 @@ public class CrimeCategoryService : ICrimeCategoryService
 
     public async Task<IEnumerable<CrimeCategoryResultDto>> RetrieveAllAsync()
     {
-        var criminalCategories = repository.GetAll();
+        var criminalCategories = repository.GetAll(includes: new[] { "Crimes" });
 
         return mapper.Map<IEnumerable<CrimeCategoryResultDto>>(criminalCategories);
     }

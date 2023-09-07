@@ -93,7 +93,7 @@ public class CrimeService : ICrimeService
 
     public async Task<bool> DestroyAsync(long id)
     {
-        var crime = await this.crimeRepository.GetAsync(c => c.Id.Equals(id), includes: new[] { "Criminal", "CrimeCategory" });
+        var crime = await this.crimeRepository.GetAsync(c => c.Id.Equals(id));
         if (crime is null)
             throw new NotFoundException("This crime is not found");
 
