@@ -1,2 +1,2 @@
-# SaveKidsNet
-Open register of kidnappers, pedophiles and other kids-related criminals. Be aware of your kids. Save Kids !!!
+# savekids.net
+An open register of kidnappers, pedophiles and other criminals associated with children. Be aware of your kids. Save kids!!!
