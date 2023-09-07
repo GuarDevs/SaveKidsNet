@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SaveKids.DAL.DbContexts;
+using SaveKids.Service.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 var app = builder.Build();
+
+PathHelper.WebRootPath = Path.GetFullPath("wwwroot");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

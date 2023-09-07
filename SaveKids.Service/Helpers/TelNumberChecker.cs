@@ -2,7 +2,7 @@
 
 public static class TelNumberChecker
 {
-    public static bool CheckUzbTelNumber(string telNumber) 
+    public static bool IsUzbNumber(string telNumber) 
     {
         if (telNumber.Length != 13)
             return false;
