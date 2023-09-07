@@ -1,7 +1,5 @@
 ﻿using SaveKids.Domain.Commons;
-using SaveKids.Domain.Entities.Attachments;
 using SaveKids.Domain.Entities.Criminals;
-using System.Reflection.Metadata.Ecma335;
 
 namespace SaveKids.Domain.Entities.Crimes;
 

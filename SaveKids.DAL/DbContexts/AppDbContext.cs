@@ -16,4 +16,28 @@ public class AppDbContext : DbContext
     public DbSet<Criminal> Criminals { get; set; }
     public DbSet<Attachment> Attachments { get; set; }
     public DbSet<CrimeCategory> CrimeCategories { get; set; }
+
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		#region Seet Data
+		modelBuilder.Entity<User>()
+            .HasData(
+            new User { Id = 1, FirstName = "Mansurjon", LastName = "Mo'ydinov", Email = "mansurjonmoydinov16072002@gmail.com" , DateOfBirth = new DateTimeOffset(new DateTime(11, 06, 2024)).UtcDateTime, TelNumber = "+998908515979", Role = Domain.Enums.UserRole.SuperAdmin, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512"},
+			new User { Id = 2, FirstName = "Muhammadqodir", LastName = "Turdiyev", Email = @"turdiyevgmail.com", DateOfBirth = new DateTimeOffset(new DateTime(01, 08, 2024)).UtcDateTime, TelNumber = "+998912031759", Role = Domain.Enums.UserRole.Admin, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" },
+			new User { Id = 3, FirstName = "Nurullo", LastName = "Nurmatov", Email = "jasurbek@gmail.com", DateOfBirth = new DateTimeOffset(new DateTime(12, 04, 2024)).UtcDateTime, TelNumber = "+99890335578900", Role = Domain.Enums.UserRole.User, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" },
+			new User { Id = 4, FirstName = "Saidkamol", LastName = "Saidjamolov", Email = "saidkamolgmail.com", DateOfBirth = new DateTimeOffset(new DateTime(11, 04, 1999)).UtcDateTime, TelNumber = "+998908515979", Role = Domain.Enums.UserRole.User, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" }
+		);
+		#endregion
+		#region  Fluent Api
+		modelBuilder.Entity<CrimeCategory>()
+            .HasMany(t => t.Crimes)
+            .WithOne(t => t.CrimeCategory)
+            .HasForeignKey(t => t.CrimeCategoryId);
+
+        modelBuilder.Entity<Criminal>()
+            .HasMany(t => t.Crimes)
+            .WithOne(t => t.Criminal)
+            .HasForeignKey(t => t.CriminalId);
+#endregion
+    }
 }
