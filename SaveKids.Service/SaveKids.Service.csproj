@@ -14,13 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SaveKids.DAL\SaveKids.DAL.csproj" />
     <ProjectReference Include="..\SaveKids.Domain\SaveKids.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
