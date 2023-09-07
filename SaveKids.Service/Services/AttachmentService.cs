@@ -6,13 +6,21 @@ namespace SaveKids.Service.Services;
 
 public class AttachmentService : IAttachmentService
 {
-    public Task<bool> RemoveAsync(Attachment attachment)
+    private readonly IAttachmentService attachmentService;
+
+    public AttachmentService(IAttachmentService attachmentService)
     {
-        throw new NotImplementedException();
+        this.attachmentService = attachmentService;
     }
 
     public Task<Attachment> UploadAsync(AttachmentCreationDto dto)
     {
         throw new NotImplementedException();
     }
+
+    public Task<bool> RemoveAsync(Attachment attachment)
+    {
+        throw new NotImplementedException();
+    }
+
 }
