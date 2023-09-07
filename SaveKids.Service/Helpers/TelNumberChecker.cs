@@ -1,6 +1,6 @@
 ﻿namespace SaveKids.Service.Helpers;
 
-public static class PhoneChecker
+public static class TelNumberChecker
 {
     public static bool IsUzbNumber(string telNumber) 
     {
