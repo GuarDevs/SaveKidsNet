@@ -7,6 +7,7 @@ using SaveKids.Domain.Enums;
 using SaveKids.Service.DTOs.Users;
 using SaveKids.Service.Exceptions;
 using SaveKids.Service.Extensions;
+using SaveKids.Service.Helpers;
 using SaveKids.Service.Interfaces;
 
 namespace SaveKids.Service.Services;
@@ -24,12 +25,17 @@ public class UserService : IUserService
 
     public async Task<UserResultDto> AddAsync(UserCreationDto dto)
     {
+        var existTelNmber = TelNumberChecker.IsUzbNumber(dto.TelNumber);
+        if (existTelNmber == false)
+            throw new CustomException($"This tel number is valid {dto.TelNumber}");
+
         User newUser = _mapper.Map<User>(dto);
         if (this.DoesUserExist(newUser))
             throw new AlreadyExistException("A user with same email or phone number already exists.");
 
         newUser.Role = UserRole.User;
         newUser.DateOfBirth = dto.DateOfBirth.ToUniversalTime();
+
         await _repository.AddAsync(newUser);
         await _repository.SaveAsync();
 
@@ -38,19 +44,27 @@ public class UserService : IUserService
 
     public async Task<UserResultDto> ModifyAsync(UserUpdateDto dto)
     {
-        var theUser = _mapper.Map<User>(dto);
-        
-        try
+        var existTelNmber = TelNumberChecker.IsUzbNumber(dto.TelNumber);
+        if (existTelNmber == false)
+            throw new CustomException($"This tel number is valid {dto.TelNumber}");
+
+        var existUser = await _repository.GetAsync(u => u.Id.Equals(dto.Id))
+            ?? throw new NotFoundException($"This user was not found with {dto.Id}");
+
+        if(!(existUser.Email.ToLower().Equals(dto.Email.ToLower())
+            || existUser.TelNumber.Equals(dto.TelNumber)))
         {
-            _repository.Update(theUser);
+            User newUser = _mapper.Map<User>(dto);
+            if (this.DoesUserExist(newUser))
+                throw new AlreadyExistException("A user with same email or phone number already exists.");
         }
-        catch (Exception ex)
-        {
-            throw new CustomException("Something went wrong. Look at inner exception.", ex);
-        }
-        
-        var updatedUser = await _repository.GetAsync(u => u.Id.Equals(theUser.Id));
-        return _mapper.Map<UserResultDto>(theUser);
+
+        _mapper.Map(dto, existUser);
+
+        _repository.Update(existUser);
+        await _repository.SaveAsync();
+
+        return _mapper.Map<UserResultDto>(existUser);
     }
 
     public async Task<bool> RemoveAsync(long id)
@@ -60,6 +74,8 @@ public class UserService : IUserService
             throw new NotFoundException("Not found any user with such id.");
 
         _repository.Delete(theUser);
+        await _repository.SaveAsync();
+
         return true;
     }
 
@@ -70,6 +86,8 @@ public class UserService : IUserService
             throw new NotFoundException("Not found any user with such id.");
 
         _repository.Destroy(theUser);
+        await _repository.SaveAsync();
+
         return true;
     }
 
@@ -89,7 +107,7 @@ public class UserService : IUserService
     public async Task<UserResultDto> RetrieveByEmailAndPasswordAsync(string email, string password)
     {
         var theUser = await _repository.GetAsync(u => 
-                           u.Email.Equals(email) &&
+                           u.Email.ToLower().Equals(email.ToLower()) &&
                            u.Password.Equals(password));
 
         if (theUser is null)
@@ -110,6 +128,6 @@ public class UserService : IUserService
 
     private bool DoesUserExist(User user)
         => _repository.GetAll().Any(u => 
-            u.Email.Equals(user.Email) || 
+            u.Email.ToLower().Equals(user.Email.ToLower()) || 
             u.TelNumber.Equals(user.TelNumber));
 }

@@ -27,8 +27,8 @@ public class CriminalService : ICriminalService
     {
         dto.DateOfBirth = dto.DateOfBirth.ToUniversalTime();
         var criminal = await this.criminalRepository.GetAsync(c =>
-                           c.FirstName.Equals(dto.FirstName)
-                        && c.LastName.Equals(dto.LastName)
+                           c.FirstName.ToLower().Equals(dto.FirstName.ToLower())
+                        && c.LastName.ToLower().Equals(dto.LastName.ToLower())
                         && c.DateOfBirth.Equals(dto.DateOfBirth));
 
         if (criminal is not null)
@@ -46,6 +46,20 @@ public class CriminalService : ICriminalService
         var criminal = await this.criminalRepository.GetAsync(c => c.Id.Equals(dto.Id));
         if (criminal is null)
             throw new NotFoundException("This criminal is not found");
+
+        dto.DateOfBirth = dto.DateOfBirth.ToUniversalTime();
+        if (!(criminal.FirstName.ToLower().Equals(dto.FirstName.ToLower())
+                && criminal.LastName.ToLower().Equals(dto.LastName.ToLower())
+                && criminal.DateOfBirth.Equals(dto.DateOfBirth)))
+        {
+            var existCriminal = await this.criminalRepository.GetAsync(c =>
+                   c.FirstName.ToLower().Equals(dto.FirstName.ToLower())
+                && c.LastName.ToLower().Equals(dto.LastName.ToLower())
+                && c.DateOfBirth.Equals(dto.DateOfBirth));
+
+            if (existCriminal is not null)
+                throw new AlreadyExistException("This criminal is alredy exist");
+        }
 
         var mappedCriminal = this.mapper.Map(dto, criminal);
         this.criminalRepository.Update(mappedCriminal);
