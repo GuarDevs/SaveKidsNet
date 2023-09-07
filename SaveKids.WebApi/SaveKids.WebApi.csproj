@@ -17,6 +17,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SaveKids.DAL\SaveKids.DAL.csproj" />
+    <ProjectReference Include="..\SaveKids.Service\SaveKids.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>
