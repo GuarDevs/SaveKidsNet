@@ -220,6 +220,60 @@ namespace SaveKids.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9415),
+                            DateOfBirth = new DateTime(2024, 11, 5, 19, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "mansurjonmoydinov16072002@gmail.com",
+                            FirstName = "Mansurjon",
+                            IsDeleted = false,
+                            LastName = "Mo'ydinov",
+                            Password = "mansurjon1512",
+                            Role = 1,
+                            TelNumber = "+998908515979"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9419),
+                            DateOfBirth = new DateTime(2024, 1, 7, 19, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "turdiyevgmail.com",
+                            FirstName = "Muhammadqodir",
+                            IsDeleted = false,
+                            LastName = "Turdiyev",
+                            Password = "mansurjon1512",
+                            Role = 2,
+                            TelNumber = "+998912031759"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9422),
+                            DateOfBirth = new DateTime(2024, 12, 3, 19, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "jasurbek@gmail.com",
+                            FirstName = "Nurullo",
+                            IsDeleted = false,
+                            LastName = "Nurmatov",
+                            Password = "mansurjon1512",
+                            Role = 3,
+                            TelNumber = "+99890335578900"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedAt = new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9426),
+                            DateOfBirth = new DateTime(1999, 11, 3, 19, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "saidkamolgmail.com",
+                            FirstName = "Saidkamol",
+                            IsDeleted = false,
+                            LastName = "Saidjamolov",
+                            Password = "mansurjon1512",
+                            Role = 3,
+                            TelNumber = "+998908515979"
+                        });
                 });
 
             modelBuilder.Entity("SaveKids.Domain.Entities.Crimes.Crime", b =>
