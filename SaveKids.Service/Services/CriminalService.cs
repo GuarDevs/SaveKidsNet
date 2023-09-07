@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SaveKids.DAL.IRepositories;
 using SaveKids.Domain.Configurations;
 using SaveKids.Domain.Entities.Criminals;
+using SaveKids.Service.DTOs.Attachments;
 using SaveKids.Service.DTOs.Criminals;
 using SaveKids.Service.Exceptions;
 using SaveKids.Service.Extensions;
@@ -13,11 +14,13 @@ namespace SaveKids.Service.Services;
 public class CriminalService : ICriminalService
 {
     private readonly IMapper mapper;
+    private readonly IAttachmentService attachmentService;
     private readonly IRepository<Criminal> criminalRepository;
-    public CriminalService(IMapper mapper, IRepository<Criminal> criminalRepository)
+    public CriminalService(IMapper mapper, IRepository<Criminal> criminalRepository, IAttachmentService attachmentService)
     {
         this.mapper = mapper;
         this.criminalRepository = criminalRepository;
+        this.attachmentService = attachmentService;
     }
 
     public async Task<CriminalResultDto> AddAsync(CriminalCreationDto dto)
@@ -89,5 +92,36 @@ public class CriminalService : ICriminalService
         var criminals = await this.criminalRepository.GetAll(includes: new[] { "Crimes" }).ToPaginate(pagination).ToListAsync();
         var result = this.mapper.Map<IEnumerable<CriminalResultDto>>(criminals);
         return result;
+    }
+
+    public async Task<CriminalResultDto> UploadImageAsync(long criminalId, AttachmentCreationDto dto)
+    {
+        var existCriminal = await criminalRepository.GetAsync(u => u.Id.Equals(criminalId))
+            ?? throw new NotFoundException("This criminal not found");
+
+        var result = await attachmentService.UploadAsync(dto);
+
+        existCriminal.Attachment = result;
+        existCriminal.AttachmentId = result.Id;
+
+        criminalRepository.Update(existCriminal);
+        await criminalRepository.SaveAsync();
+        return mapper.Map<CriminalResultDto>(existCriminal);
+    }
+
+    public async Task<CriminalResultDto> ModifyImageAsync(long criminalId, AttachmentCreationDto dto)
+    {
+        var criminal = await this.criminalRepository.GetAsync(p => p.Id.Equals(criminalId))
+            ?? throw new NotFoundException("This criminal is not found");
+
+        await this.attachmentService.RemoveAsync(criminal.Attachment);
+        var createdAttachment = await this.attachmentService.UploadAsync(dto);
+
+        criminal.AttachmentId = createdAttachment.Id;
+        criminal.Attachment = createdAttachment;
+        this.criminalRepository.Update(criminal);
+        await this.criminalRepository.SaveAsync();
+
+        return this.mapper.Map<CriminalResultDto>(criminal);
     }
 }
