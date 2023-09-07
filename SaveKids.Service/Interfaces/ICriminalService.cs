@@ -12,6 +12,6 @@ public interface ICriminalService
     Task<bool> DestroyAsync(long id);
     Task<CriminalResultDto> RetrieveByIdAsync(long id);
     Task<IEnumerable<CriminalResultDto>> RetrieveAllAsync(PaginationParams pagination);
-    Task<CriminalResultDto> ModifyImageAsync(long productId, AttachmentCreationDto dto);
-    Task<CriminalResultDto> UploadImageAsync(long userId, AttachmentCreationDto dto);
+    Task<CriminalResultDto> ModifyImageAsync(long criminalId, AttachmentCreationDto dto);
+    Task<CriminalResultDto> UploadImageAsync(long criminalId, AttachmentCreationDto dto);
 }
