@@ -52,7 +52,7 @@ public class CrimeCategoryService : ICrimeCategoryService
         if (existCriminalCategory is null)
             throw new NotFoundException($"This criminal category was not found with Id = {id}");
 
-        this.repository.Delete(existCriminalCategory);
+        this.repository.Destroy(existCriminalCategory);
         await this.repository.SaveAsync();
         return true;
     }
