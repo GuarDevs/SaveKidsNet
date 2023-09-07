@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveKids.Domain", "SaveKids.Domain\SaveKids.Domain.csproj", "{7256BC20-3BBD-4FE1-BD6E-8309648D8E04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveKids.Domain", "SaveKids.Domain\SaveKids.Domain.csproj", "{7256BC20-3BBD-4FE1-BD6E-8309648D8E04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveKids.DAL", "SaveKids.DAL\SaveKids.DAL.csproj", "{E4B8B868-BD8F-40DF-AE7B-F3E43C86CE6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveKids.DAL", "SaveKids.DAL\SaveKids.DAL.csproj", "{E4B8B868-BD8F-40DF-AE7B-F3E43C86CE6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveKids.WebApi", "SaveKids.WebApi\SaveKids.WebApi.csproj", "{CB3C9D00-D2A3-4783-BF81-3AF569F84DE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveKids.WebApi", "SaveKids.WebApi\SaveKids.WebApi.csproj", "{CB3C9D00-D2A3-4783-BF81-3AF569F84DE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveKids.Service", "SaveKids.Service\SaveKids.Service.csproj", "{1AE0FF1E-C33B-4F6C-8DB6-FB8EAE14556C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveKids.Service", "SaveKids.Service\SaveKids.Service.csproj", "{1AE0FF1E-C33B-4F6C-8DB6-FB8EAE14556C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveKidsNet.Wep", "SaveKidsNet.Wep\SaveKidsNet.Wep.csproj", "{C56DFCF4-1A04-41C6-A4D3-E16BB1CB348F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1AE0FF1E-C33B-4F6C-8DB6-FB8EAE14556C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AE0FF1E-C33B-4F6C-8DB6-FB8EAE14556C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AE0FF1E-C33B-4F6C-8DB6-FB8EAE14556C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56DFCF4-1A04-41C6-A4D3-E16BB1CB348F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56DFCF4-1A04-41C6-A4D3-E16BB1CB348F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56DFCF4-1A04-41C6-A4D3-E16BB1CB348F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56DFCF4-1A04-41C6-A4D3-E16BB1CB348F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
