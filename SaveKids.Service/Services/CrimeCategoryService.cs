@@ -22,7 +22,7 @@ public class CrimeCategoryService : ICrimeCategoryService
 
     public async Task<CrimeCategoryResultDto> AddAsync(CrimeCategoryCreationDto dto)
     {
-        var existCrimeCategory = await repository.GetAsync(c => string.Equals(c.Name, dto.Name, StringComparison.OrdinalIgnoreCase));
+        var existCrimeCategory = await repository.GetAsync(c => c.Name.ToLower().Equals(dto.Name.ToLower()));
         if (existCrimeCategory is not null)
             throw new AlreadyExistException($"This category already exist with {dto.Name}");
 
@@ -41,7 +41,7 @@ public class CrimeCategoryService : ICrimeCategoryService
 
         if(!string.Equals(existCriminalCategory.Name, dto.Name, StringComparison.OrdinalIgnoreCase))
         {
-            var existCrimeCategory2 = await repository.GetAsync(c => string.Equals(c.Name, dto.Name, StringComparison.OrdinalIgnoreCase));
+            var existCrimeCategory2 = await repository.GetAsync(c => c.Name.ToLower().Equals(dto.Name.ToLower()));
             if (existCrimeCategory2 is not null)
                 throw new AlreadyExistException($"This category already exist with {dto.Name}");
         }
