@@ -21,10 +21,10 @@ public class AppDbContext : DbContext
 		#region Seet Data
 		modelBuilder.Entity<User>()
 				.HasData(
-				new User { Id = 1, FirstName = "Mansurjon", LastName = "Mo'ydinov", Email = "mansurjonmoydinov16072002@gmail.com", DateOfBirth = new DateTimeOffset(new DateTime(11, 06, 2024)).UtcDateTime, TelNumber = "+998908515979", Role = Domain.Enums.UserRole.SuperAdmin, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" },
-		  new User { Id = 2, FirstName = "Muhammadqodir", LastName = "Turdiyev", Email = @"turdiyevgmail.com", DateOfBirth = new DateTimeOffset(new DateTime(01, 08, 2024)).UtcDateTime, TelNumber = "+998912031759", Role = Domain.Enums.UserRole.Admin, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" },
-		  new User { Id = 3, FirstName = "Nurullo", LastName = "Nurmatov", Email = "jasurbek@gmail.com", DateOfBirth = new DateTimeOffset(new DateTime(12, 04, 2024)).UtcDateTime, TelNumber = "+99890335578900", Role = Domain.Enums.UserRole.User, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" },
-		  new User { Id = 4, FirstName = "Saidkamol", LastName = "Saidjamolov", Email = "saidkamolgmail.com", DateOfBirth = new DateTimeOffset(new DateTime(11, 04, 1999)).UtcDateTime, TelNumber = "+998908515979", Role = Domain.Enums.UserRole.User, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" }
+				new User { Id = 1, FirstName = "Mansurjon", LastName = "Mo'ydinov", Email = "mansurjonmoydinov16072002@gmail.com", DateOfBirth = new DateTimeOffset(new DateTime(2024, 11, 06)).UtcDateTime, TelNumber = "+998908515979", Role = Domain.Enums.UserRole.SuperAdmin, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" },
+		  new User { Id = 2, FirstName = "Muhammadqodir", LastName = "Turdiyev", Email = @"turdiyevgmail.com", DateOfBirth = new DateTimeOffset(new DateTime(2024, 01, 08)).UtcDateTime, TelNumber = "+998912031759", Role = Domain.Enums.UserRole.Admin, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" },
+		  new User { Id = 3, FirstName = "Nurullo", LastName = "Nurmatov", Email = "jasurbek@gmail.com", DateOfBirth = new DateTimeOffset(new DateTime(2024, 12, 04)).UtcDateTime, TelNumber = "+99890335578900", Role = Domain.Enums.UserRole.User, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" },
+		  new User { Id = 4, FirstName = "Saidkamol", LastName = "Saidjamolov", Email = "saidkamolgmail.com", DateOfBirth = new DateTimeOffset(new DateTime(1999, 11, 04)).UtcDateTime, TelNumber = "+998908515979", Role = Domain.Enums.UserRole.User, CreatedAt = DateTime.UtcNow, Password = "mansurjon1512" }
 		);
 		#endregion
 		#region  Fluent Api
