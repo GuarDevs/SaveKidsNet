@@ -6,15 +6,17 @@ namespace SaveKids.Domain.Entities.Criminals;
 
 public class Criminal : Person
 {
-    public string PlaceOfBirth { get; set; }
-    public string Nationatily { get; set; }
-    public string Hair { get; set; }
-    public string Eyes { get; set; }
-    public string Gender { get; set; }
+    public string PlaceOfBirth { get; set; } = string.Empty;
+    public string Nationatily { get; set; } = string.Empty;
+    public string Hair { get; set; } = string.Empty;
+    public string Eyes { get; set; } = string.Empty;
+    public string Gender { get; set; } = string.Empty;
     public double Height { get; set; }
     public double Weight { get; set; }
-    public string Detail { get; set; }
-    public long? AttachmendId { get; set; }
-    public Attachment Attachment { get; set; }
+
+    public string Detail { get; set; } = string.Empty;
+    public long? AttachmentId { get; set; }
+    public Attachment Attachment { get; set; } = default!;
     public ICollection<Crime> Crimes { get; set; }
+
 }
