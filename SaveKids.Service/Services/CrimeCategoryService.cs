@@ -22,6 +22,10 @@ public class CrimeCategoryService : ICrimeCategoryService
 
     public async Task<CrimeCategoryResultDto> AddAsync(CrimeCategoryCreationDto dto)
     {
+        var existCrimeCategory = await repository.GetAsync(c => string.Equals(c.Name, dto.Name, StringComparison.OrdinalIgnoreCase));
+        if (existCrimeCategory is not null)
+            throw new AlreadyExistException($"This category already exist with {dto.Name}");
+
         var crimeCategory = mapper.Map<CrimeCategory>(dto);
 
         await this.repository.AddAsync(crimeCategory);
@@ -32,10 +36,15 @@ public class CrimeCategoryService : ICrimeCategoryService
 
     public async Task<CrimeCategoryResultDto> ModifyAsync(CrimeCategoryUpdateDto dto)
     {
-        var existCriminalCategory = await repository.GetAsync(c => c.Id.Equals(dto.Id));
+        var existCriminalCategory = await repository.GetAsync(c => c.Id.Equals(dto.Id))
+            ?? throw new NotFoundException($"This criminal category was not found with Id = {dto.Id}");
 
-        if (existCriminalCategory is null)
-            throw new NotFoundException($"This criminal category was not found with Id = {dto.Id}");
+        if(!string.Equals(existCriminalCategory.Name, dto.Name, StringComparison.OrdinalIgnoreCase))
+        {
+            var existCrimeCategory2 = await repository.GetAsync(c => string.Equals(c.Name, dto.Name, StringComparison.OrdinalIgnoreCase));
+            if (existCrimeCategory2 is not null)
+                throw new AlreadyExistException($"This category already exist with {dto.Name}");
+        }
 
         mapper.Map(dto, existCriminalCategory);
 
