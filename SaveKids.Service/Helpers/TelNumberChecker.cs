@@ -1,8 +1,8 @@
 ﻿namespace SaveKids.Service.Helpers;
 
-public static class TelNumberChecker
+public static class PhoneChecker
 {
-    public static bool CheckUzbTelNumber(string telNumber) 
+    public static bool IsUzbNumber(string telNumber) 
     {
         if (telNumber.Length != 13)
             return false;
