@@ -1,11 +1,13 @@
-﻿using SaveKids.Domain.Commons;
-using SaveKids.Domain.Entities.Attachments;
-using SaveKids.Domain.Entities.Crimes;
+﻿using SaveKids.Domain.Entities.Attachments;
 
-namespace SaveKids.Domain.Entities.Criminals;
+namespace SaveKids.Service.DTOs.Criminals;
 
-public class Criminal : Person
+public class CriminalResultDto
 {
+    public long Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime DateOfBirth { get; set; }
     public string PlaceOfBirth { get; set; }
     public string Nationatily { get; set; }
     public string Hair { get; set; }
@@ -14,7 +16,5 @@ public class Criminal : Person
     public double Height { get; set; }
     public double Weight { get; set; }
     public string Detail { get; set; }
-    public long? AttachmendId { get; set; }
     public Attachment Attachment { get; set; }
-    public ICollection<Crime> Crimes { get; set; }
 }

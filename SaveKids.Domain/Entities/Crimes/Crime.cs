@@ -13,6 +13,6 @@ public class Crime : Auditable
     public string Detail { get; set; }
     public long CriminalId { get; set; }
     public Criminal Criminal { get; set; }
-    public long CriminalCategoryId { get; set; }
-    public CrimeCategory CriminalCategory { get; set; }
+    public long CrimeCategoryId { get; set; }
+    public CrimeCategory CrimeCategory { get; set; }
 }
