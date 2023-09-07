@@ -10,5 +10,5 @@ public interface IUserService
     Task<bool> RemoveAsync(long id);
     Task<UserResultDto> RetrieveByIdAsync(long id);
     Task<UserResultDto> RetrieveByEmailAndPassword(string email, string password);
-    Task<IEnumerable<UserResultDto>> RetrieveAllAsync(PaginationParams pagination);
+    Task<IEnumerable<UserResultDto>> RetrieveAllAsync(PaginationParams paginationParams);
 }
