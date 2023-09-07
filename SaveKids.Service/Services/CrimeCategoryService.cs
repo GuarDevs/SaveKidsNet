@@ -67,7 +67,7 @@ public class CrimeCategoryService : ICrimeCategoryService
         return mapper.Map<CrimeCategoryResultDto>(existCriminalCategory);
     }
 
-    public async Task<IEnumerable<CrimeCategoryResultDto>> RetrieveAllAsync(PaginationParams pagination)
+    public async Task<IEnumerable<CrimeCategoryResultDto>> RetrieveAllAsync()
     {
         var criminalCategories = repository.GetAll();
 

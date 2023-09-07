@@ -9,5 +9,5 @@ public interface ICrimeCategoryService
     Task<CrimeCategoryResultDto> ModifyAsync(CrimeCategoryUpdateDto dto);
     Task<bool> DestroyAsync(long id);
     Task<CrimeCategoryResultDto> RetrieveByIdAsync(long id);
-    Task<IEnumerable<CrimeCategoryResultDto>> RetrieveAllAsync(PaginationParams pagination);
+    Task<IEnumerable<CrimeCategoryResultDto>> RetrieveAllAsync();
 }
