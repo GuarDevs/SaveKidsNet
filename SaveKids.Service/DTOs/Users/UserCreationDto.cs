@@ -1,4 +1,6 @@
-﻿namespace SaveKids.Service.DTOs.Users;
+﻿using SaveKids.Domain.Enums;
+
+namespace SaveKids.Service.DTOs.Users;
 
 public class UserCreationDto
 {
@@ -8,4 +10,5 @@ public class UserCreationDto
     public string TelNumber { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
+    public UserRole Role { get; set; }
 }

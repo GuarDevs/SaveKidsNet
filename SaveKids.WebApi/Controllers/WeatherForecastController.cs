@@ -2,9 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SaveKids.WebApi.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : BaseController
     {
         private static readonly string[] Summaries = new[]
         {

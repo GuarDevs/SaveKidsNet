@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SaveKids.DAL.IRepositories;
 using SaveKids.Domain.Configurations;
 using SaveKids.Domain.Entities.Users;
+using SaveKids.Domain.Enums;
 using SaveKids.Service.DTOs.Users;
 using SaveKids.Service.Exceptions;
 using SaveKids.Service.Extensions;
@@ -27,6 +28,7 @@ public class UserService : IUserService
         if (this.DoesUserExist(newUser))
             throw new AlreadyExistException("A user with same email or phone number already exists.");
 
+        newUser.Role = UserRole.User;
         newUser.DateOfBirth = dto.DateOfBirth.ToUniversalTime();
         await _repository.AddAsync(newUser);
         await _repository.SaveAsync();
@@ -46,7 +48,7 @@ public class UserService : IUserService
         {
             throw new CustomException("Something went wrong. Look at inner exception.", ex);
         }
-
+        
         var updatedUser = await _repository.GetAsync(u => u.Id.Equals(theUser.Id));
         return _mapper.Map<UserResultDto>(theUser);
     }
@@ -58,6 +60,16 @@ public class UserService : IUserService
             throw new NotFoundException("Not found any user with such id.");
 
         _repository.Delete(theUser);
+        return true;
+    }
+
+    public async Task<bool> DestroyAsync(long id)
+    {
+        var theUser = await _repository.GetAsync(u => u.Id.Equals(id));
+        if (theUser is null)
+            throw new NotFoundException("Not found any user with such id.");
+
+        _repository.Destroy(theUser);
         return true;
     }
 
