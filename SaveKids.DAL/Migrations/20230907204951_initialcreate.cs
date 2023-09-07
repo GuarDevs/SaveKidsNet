@@ -4,6 +4,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace SaveKids.DAL.Migrations
 {
     /// <inheritdoc />
@@ -130,6 +132,17 @@ namespace SaveKids.DAL.Migrations
                         principalTable: "Criminals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "CreatedAt", "DateOfBirth", "Email", "FirstName", "IsDeleted", "LastName", "Password", "Role", "TelNumber", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1L, new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9415), new DateTime(2024, 11, 5, 19, 0, 0, 0, DateTimeKind.Utc), "mansurjonmoydinov16072002@gmail.com", "Mansurjon", false, "Mo'ydinov", "mansurjon1512", 1, "+998908515979", null },
+                    { 2L, new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9419), new DateTime(2024, 1, 7, 19, 0, 0, 0, DateTimeKind.Utc), "turdiyevgmail.com", "Muhammadqodir", false, "Turdiyev", "mansurjon1512", 2, "+998912031759", null },
+                    { 3L, new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9422), new DateTime(2024, 12, 3, 19, 0, 0, 0, DateTimeKind.Utc), "jasurbek@gmail.com", "Nurullo", false, "Nurmatov", "mansurjon1512", 3, "+99890335578900", null },
+                    { 4L, new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9426), new DateTime(1999, 11, 3, 19, 0, 0, 0, DateTimeKind.Utc), "saidkamolgmail.com", "Saidkamol", false, "Saidjamolov", "mansurjon1512", 3, "+998908515979", null }
                 });
 
             migrationBuilder.CreateIndex(
