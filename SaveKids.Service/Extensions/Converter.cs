@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace SaveKids.Service.Extensions
+namespace SaveKids.Service.Extensions;
+
+public static class Converter
 {
-    internal class Converter
+    public static byte[] ToByte(this IFormFile formFile)
     {
+        using var memoryStream = new MemoryStream();
+        formFile.CopyTo(memoryStream);
+        return memoryStream.ToArray();
     }
 }
