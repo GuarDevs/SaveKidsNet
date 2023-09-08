@@ -105,7 +105,8 @@
 <div class="container">
     <div class="row">
     @foreach (var criminal in Model)
-        {
+        {@*
+            <div class="card">
         <div class="col-md-3">
             <img src="Filepath"
              alt="Person's Photo" class="img-fluid">
@@ -114,22 +115,39 @@
             <h2>
                 @criminal.FirstName.ToUpper() @criminal.LastName.ToUpper()
             </h2>
-            <p>
-                <b>Nationality / Gender:</b> @criminal.Nationatily / @criminal.Gender
-            </p>
-            <p>
-                <b>Year / Place of birth:</b> @criminal.DateOfBirth.Year / @criminal.PlaceOfBirth
-            </p>
-            <p>
-                <b>Hair / Eyes:</b> @criminal.Hair / @criminal.Eyes
-            </p>
-            <p>
-                <b>Height / Weight:</b> @criminal.Height / @criminal.Weight
-            </p>
-                <a asp-action="Edit" asp-route-id="@criminal.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@criminal.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@criminal.Id">Delete</a>
+            
+                
         </div>
+        </div>*@
+
+            <div class="card mb-3" style="max-width: 600px; margin-right: 20px">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="..." class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>@criminal.FirstName.ToUpper() @criminal.LastName.ToUpper()</b></h5>
+                            <p class="card-text">
+                                <b>Nationality / Gender:</b> @criminal.Nationatily / @criminal.Gender
+                            </p>
+                            <p class="card-text">
+                                <b>Year / Place of birth:</b> @criminal.DateOfBirth.Year / @criminal.PlaceOfBirth
+                            </p>
+                            <p class="card-text">
+                                <b>Hair / Eyes:</b> @criminal.Hair / @criminal.Eyes
+                            </p>
+                            <p class="card-text">
+                                <b>Height / Weight:</b> @criminal.Height / @criminal.Weight
+                            </p>
+                            <a asp-action="Edit" asp-route-id="@criminal.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@criminal.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@criminal.Id">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         }
     </div>
 </div>
