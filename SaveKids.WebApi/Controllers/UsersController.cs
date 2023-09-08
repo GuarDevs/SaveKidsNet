@@ -5,6 +5,7 @@ using SaveKids.Domain.Configurations;
 using SaveKids.Domain.Enums;
 using SaveKids.Service.DTOs.Users;
 using SaveKids.Service.Interfaces;
+using System.Security.Claims;
 
 namespace SaveKids.WebApi.Controllers;
 
@@ -33,16 +34,38 @@ public class UsersController : BaseController
         => Ok(await _userService.RemoveAsync(id));
 
 
+    [HttpGet("DeleteUser")]
+    public async Task<IActionResult> DeleteUserAsync()
+    {
+        var id = Convert.ToInt32(HttpContext.User.FindFirstValue("Id"));
+
+        var result = await _userService.RemoveAsync(id);
+
+        return Ok(result);
+    }
+
+
     [Authorize(Roles = "SuperAdmin")]
     [HttpDelete("Destroy/{id:long}")]
     public async Task<IActionResult> DestroyAsync(long id)
         => Ok(await _userService.DestroyAsync(id));
 
 
+    [Authorize(Roles = "SuperAdmin,Admin")]
     [HttpGet("GetById")]
     public async Task<IActionResult> GetByIdAsync(long id)
         => Ok(await _userService.RetrieveByIdAsync(id));
 
+
+    [HttpGet("GetByUserId")]
+    public async Task<IActionResult> GetByUserId()
+    {
+        var id = Convert.ToInt32(HttpContext.User.FindFirstValue("Id"));
+
+        var result = await _userService.RetrieveByIdAsync(id);
+
+        return Ok(result);
+    }
 
     [Authorize(Roles = "SuperAdmin,Admin")]
     [HttpGet("GetAll")]
