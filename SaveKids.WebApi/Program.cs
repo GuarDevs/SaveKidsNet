@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SaveKids.DAL.DbContexts;
 using SaveKids.Service.Helpers;
 using SaveKids.WebApi.Exceptions;
 using SaveKids.WebApi.Extentions;
 using Serilog;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +34,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddServices();
 
+builder.Services.AddJwt(builder.Configuration);
+
+builder.Services.ConfigureSwagger();
+
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -46,6 +53,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseAuthorization();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 
