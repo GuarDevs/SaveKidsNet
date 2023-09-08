@@ -36,6 +36,7 @@ public class UserService : IUserService
         newUser.Role = UserRole.User;
         newUser.DateOfBirth = dto.DateOfBirth.ToUniversalTime();
 
+        newUser.Password = PasswordHash.Encrypt(dto.Password);
         await _repository.AddAsync(newUser);
         await _repository.SaveAsync();
 
@@ -60,7 +61,7 @@ public class UserService : IUserService
         }
 
         _mapper.Map(dto, existUser);
-
+        existUser.Password = PasswordHash.Encrypt(dto.Password);
         _repository.Update(existUser);
         await _repository.SaveAsync();
 
@@ -107,11 +108,15 @@ public class UserService : IUserService
     public async Task<UserResultDto> RetrieveByEmailAndPasswordAsync(string email, string password)
     {
         var theUser = await _repository.GetAsync(u => 
-                           u.Email.ToLower().Equals(email.ToLower()) &&
-                           u.Password.Equals(password));
+                           u.Email.ToLower().Equals(email.ToLower()));
 
         if (theUser is null)
-            throw new NotFoundException("Email or password is incorrect.");
+            throw new NotFoundException("Email is incorrect.");
+
+        var isValid = PasswordHash.Verify(theUser.Password, password);
+
+        if(!isValid)
+            throw new NotFoundException("Password is incorrect.");
 
         return _mapper.Map<UserResultDto>(theUser);
     }
