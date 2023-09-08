@@ -25,6 +25,8 @@ public static class ServiceCollection
         services.AddScoped<IAuthService, AuthService>();
 
         services.AddAutoMapper(typeof(MappingProfile));
+
+        services.AddRouting(options => options.LowercaseUrls = true);
     }
 
     public static void AddJwt(this IServiceCollection services, IConfiguration configuration)

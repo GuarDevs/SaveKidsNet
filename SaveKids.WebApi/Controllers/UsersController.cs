@@ -17,7 +17,6 @@ public class UsersController : BaseController
         _userService = userService;
     }
 
-
     [HttpPost("Create")]
     public async Task<IActionResult> CreateAsync(UserCreationDto dto)
         => Ok(await _userService.AddAsync(dto));
@@ -33,6 +32,7 @@ public class UsersController : BaseController
         => Ok(await _userService.RemoveAsync(id));
 
 
+    [Authorize(Roles = "SuperAdmin")]
     [HttpDelete("Destroy/{id:long}")]
     public async Task<IActionResult> DestroyAsync(long id)
         => Ok(await _userService.DestroyAsync(id));
@@ -43,7 +43,7 @@ public class UsersController : BaseController
         => Ok(await _userService.RetrieveByIdAsync(id));
 
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "SuperAdmin")]
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAllAsync([FromQuery] PaginationParams paginationParams)
         => Ok(await _userService.RetrieveAllAsync(paginationParams));
@@ -53,7 +53,7 @@ public class UsersController : BaseController
     public async Task<IActionResult> GetByEmailAndPassword(string email, string password)
         => Ok(await _userService.RetrieveByEmailAndPasswordAsync(email, password));
 
-
+    [Authorize(Roles = "SuperAdmin")]
     [HttpPatch("update-role")]
     public async Task<IActionResult> UpdateUserRoleAsync(long id, UserRole role)
         => Ok(await _userService.UpgradeUserRoleAsync(id,role));
