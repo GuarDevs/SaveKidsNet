@@ -58,7 +58,7 @@ public class UsersController : BaseController
 
 
     [HttpGet("GetByUserId")]
-    public async Task<IActionResult> GetByUserId()
+    public async Task<IActionResult> GetByUserIdAsync()
     {
         var id = Convert.ToInt32(HttpContext.User.FindFirstValue("Id"));
 
