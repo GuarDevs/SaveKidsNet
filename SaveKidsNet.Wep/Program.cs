@@ -3,6 +3,7 @@ using SaveKids.DAL.DbContexts;
 using SaveKids.Service.Helpers;
 using SaveKidsNet.Wep.Extentions;
 using Serilog;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
