@@ -27,6 +27,7 @@ public class UsersController : BaseController
         => Ok(await _userService.ModifyAsync(dto));
 
 
+    [Authorize(Roles = "SuperAdmin,Admin")]
     [HttpPatch("Delete/{id:long}")]
     public async Task<IActionResult> DeleteAsync(long id)
         => Ok(await _userService.RemoveAsync(id));
@@ -43,7 +44,7 @@ public class UsersController : BaseController
         => Ok(await _userService.RetrieveByIdAsync(id));
 
 
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAllAsync([FromQuery] PaginationParams paginationParams)
         => Ok(await _userService.RetrieveAllAsync(paginationParams));
