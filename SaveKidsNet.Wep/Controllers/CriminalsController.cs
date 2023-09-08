@@ -23,11 +23,8 @@ namespace SaveKidsNet.Wep.Controllers
         public async Task<IActionResult> Details(long id)
             => View(await _criminalService.RetrieveByIdAsync(id));
 
-        //public IActionResult Create()
-        //{
-        //    ViewData["AttachmentId"] = new SelectList(_context.Set<Attachment>(), "Id", "Id");
-        //    return View();
-        //}
+        public IActionResult Create()
+            => View();
 
         // POST: Criminals/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
