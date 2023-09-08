@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SaveKids.Service.DTOs.Users;
 using SaveKids.Service.Interfaces;
+using SaveKidsNet.Wep.Models;
 
 namespace SaveKidsNet.Wep.Controllers;
 
@@ -23,9 +24,9 @@ public class UsersController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Login(string email, string password)
+    public async Task<IActionResult> Login(UserLoginModel model)
     {
-        var user = await this.userService.RetrieveByEmailAndPasswordAsync(email, password);
+        var user = await this.userService.RetrieveByEmailAndPasswordAsync(model.Email, model.Password);
         return RedirectToAction("Index");
     }
 
