@@ -26,9 +26,6 @@ public class UsersController : Controller
     public async Task<IActionResult> Login(string email, string password)
     {
         var user = await this.userService.RetrieveByEmailAndPasswordAsync(email, password);
-        if (user is null)
-            return NotFound();
-
         return RedirectToAction("Index");
     }
 
