@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveKids.WebApi", "SaveKids
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveKids.Service", "SaveKids.Service\SaveKids.Service.csproj", "{1AE0FF1E-C33B-4F6C-8DB6-FB8EAE14556C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveKidsNet.Wep", "SaveKidsNet.Wep\SaveKidsNet.Wep.csproj", "{C56DFCF4-1A04-41C6-A4D3-E16BB1CB348F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveKidsNet.Web", "SaveKidsNet.Wep\SaveKidsNet.Web.csproj", "{C56DFCF4-1A04-41C6-A4D3-E16BB1CB348F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
