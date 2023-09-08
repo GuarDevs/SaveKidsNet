@@ -50,6 +50,12 @@ public class UsersController : BaseController
         => Ok(await _userService.RetrieveAllAsync(paginationParams));
 
 
+    [Authorize(Roles = "SuperAdmin,Admin")]
+    [HttpGet("SearchByName")]
+    public async Task<IActionResult> SearchByNameAsync(string name,[FromQuery] PaginationParams paginationParams)
+    => Ok(await _userService.SearchByNameAsync(name,paginationParams));
+
+
     [HttpGet("GetByEmailAndPassword")]
     public async Task<IActionResult> GetByEmailAndPassword(string email, string password)
         => Ok(await _userService.RetrieveByEmailAndPasswordAsync(email, password));

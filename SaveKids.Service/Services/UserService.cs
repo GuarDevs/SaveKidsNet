@@ -9,6 +9,7 @@ using SaveKids.Service.Exceptions;
 using SaveKids.Service.Extensions;
 using SaveKids.Service.Helpers;
 using SaveKids.Service.Interfaces;
+using System.Xml.Linq;
 
 namespace SaveKids.Service.Services;
 
@@ -145,4 +146,12 @@ public class UserService : IUserService
 
         return _mapper.Map<UserResultDto>(user);
     }
+
+    public async Task<IEnumerable<UserResultDto>> SearchByNameAsync(string name, PaginationParams paginationParams)
+    {
+        var users = _repository.GetAll(u=> u.FirstName.Contains(name),true,null);
+
+        return _mapper.Map<IEnumerable<UserResultDto>>(users);
+    }
+
 }

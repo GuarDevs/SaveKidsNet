@@ -60,4 +60,14 @@ public class CriminalsController : BaseController
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAllAsync([FromQuery] PaginationParams paginationParams)
         => Ok(await _criminalService.RetrieveAllAsync(paginationParams));
+
+
+    [HttpGet("SearchByName")]
+    public async Task<IActionResult> SearchByNameAsync(string name, [FromQuery] PaginationParams paginationParams)
+    => Ok(await _criminalService.SearchByNameAsync(name, paginationParams));
+
+
+    [HttpGet("SearchByDetail")]
+    public async Task<IActionResult> SearchByDetailAsync(string detail, [FromQuery] PaginationParams paginationParams)
+    => Ok(await _criminalService.SearchByDetailAsync(detail, paginationParams));
 }

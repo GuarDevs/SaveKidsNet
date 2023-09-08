@@ -14,4 +14,5 @@ public interface IUserService
     Task<UserResultDto> RetrieveByEmailAndPasswordAsync(string email, string password);
     Task<IEnumerable<UserResultDto>> RetrieveAllAsync(PaginationParams paginationParams);
     Task<UserResultDto> UpgradeUserRoleAsync(long userId, UserRole role);
+    Task<IEnumerable<UserResultDto>> SearchByNameAsync(string name, PaginationParams paginationParams);
 }

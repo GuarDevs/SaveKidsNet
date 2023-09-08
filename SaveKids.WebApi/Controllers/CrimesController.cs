@@ -2,6 +2,7 @@
 using SaveKids.Domain.Configurations;
 using SaveKids.Service.DTOs.Crimes;
 using SaveKids.Service.Interfaces;
+using SaveKids.Service.Services;
 
 namespace SaveKids.WebApi.Controllers;
 
@@ -43,4 +44,9 @@ public class CrimesController : BaseController
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAllAsync([FromQuery] PaginationParams paginationParams)
         => Ok(await _crimeService.RetrieveAllAsync(paginationParams));
+
+
+    [HttpGet("SearchByDescription")]
+    public async Task<IActionResult> SearchByNameAsync(string description, [FromQuery] PaginationParams paginationParams)
+    => Ok(await _crimeService.SearchByDescriptionAsync(description, paginationParams));
 }

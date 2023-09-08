@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SaveKids.DAL.IRepositories;
+using SaveKids.DAL.Repositories;
 using SaveKids.Domain.Configurations;
 using SaveKids.Domain.Entities.Criminals;
 using SaveKids.Service.DTOs.Attachments;
 using SaveKids.Service.DTOs.Criminals;
+using SaveKids.Service.DTOs.Users;
 using SaveKids.Service.Exceptions;
 using SaveKids.Service.Extensions;
 using SaveKids.Service.Interfaces;
+using System.Xml.Linq;
 
 namespace SaveKids.Service.Services;
 
@@ -137,5 +140,19 @@ public class CriminalService : ICriminalService
         await this.criminalRepository.SaveAsync();
 
         return this.mapper.Map<CriminalResultDto>(criminal);
+    }
+
+    public async Task<IEnumerable<CriminalResultDto>> SearchByNameAsync(string name, PaginationParams paginationParams)
+    {
+        var users = criminalRepository.GetAll(u => u.FirstName.Contains(name), true, null);
+
+        return mapper.Map<IEnumerable<CriminalResultDto>>(users);
+    }
+
+    public async Task<IEnumerable<CriminalResultDto>> SearchByDetailAsync(string detail, PaginationParams paginationParams)
+    {
+        var users = criminalRepository.GetAll(u => u.Detail.Contains(detail), true, null);
+
+        return mapper.Map<IEnumerable<CriminalResultDto>>(users);
     }
 }

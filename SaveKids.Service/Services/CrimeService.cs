@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SaveKids.Domain.Configurations;
 using SaveKids.Domain.Entities.Crimes;
 using SaveKids.Domain.Entities.Criminals;
+using SaveKids.Service.DTOs.Criminals;
 
 namespace SaveKids.Service.Services;
 
@@ -116,5 +117,12 @@ public class CrimeService : ICrimeService
         var crimes = await this.crimeRepository.GetAll(includes: new[] { "Criminal", "CrimeCategory" }).ToPaginate(pagination).ToListAsync();
         var result = this.mapper.Map<IEnumerable<CrimeResultDto>>(crimes);
         return result;
+    }
+
+    public async Task<IEnumerable<CrimeResultDto>> SearchByDescriptionAsync(string description, PaginationParams paginationParams)
+    {
+        var users = crimeRepository.GetAll(u => u.Description.Contains(description), true, null);
+
+        return mapper.Map<IEnumerable<CrimeResultDto>>(users);
     }
 }

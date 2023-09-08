@@ -1,6 +1,7 @@
 ﻿using SaveKids.Domain.Configurations;
 using SaveKids.Service.DTOs.Attachments;
 using SaveKids.Service.DTOs.Criminals;
+using SaveKids.Service.DTOs.Users;
 
 namespace SaveKids.Service.Interfaces;
 
@@ -14,4 +15,6 @@ public interface ICriminalService
     Task<IEnumerable<CriminalResultDto>> RetrieveAllAsync(PaginationParams pagination);
     Task<CriminalResultDto> ModifyImageAsync(long criminalId, AttachmentCreationDto dto);
     Task<CriminalResultDto> UploadImageAsync(long criminalId, AttachmentCreationDto dto);
+    Task<IEnumerable<CriminalResultDto>> SearchByNameAsync(string name, PaginationParams paginationParams);
+    Task<IEnumerable<CriminalResultDto>> SearchByDetailAsync(string detail, PaginationParams paginationParams);
 }
