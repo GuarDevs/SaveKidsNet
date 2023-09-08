@@ -2,7 +2,7 @@
 using SaveKidsNet.Wep.Models;
 using System.Diagnostics;
 
-namespace SaveKidsNet.Wep.Controllers
+namespace SaveKidsNet.Web.Controllers
 {
     public class HomeController : Controller
     {

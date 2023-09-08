@@ -1,0 +1,125 @@
+﻿@model IEnumerable<SaveKids.Service.DTOs.Criminals.CriminalResultDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@*
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nationatily)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hair)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Eyes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attachment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationatily)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hair)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eyes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attachment.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@
+
+<div class="container">
+    <div class="row">
+    @foreach (var criminal in Model)
+        {
+        <!-- Left Column (Image) -->
+        <div class="col-md-3">
+            <img src="Filepath"
+             alt="Person's Photo" class="img-fluid">
+        </div>
+        <!-- Right Column (Person's Information) -->
+        <div class="col-md-6">
+            <h2>@criminal.FirstName @criminal.LastName</h2>
+            <p>Nationality / Gender: @criminal.Nationatily / @criminal.Gender</p>
+            <p>Year / Place of birth: @criminal.DateOfBirth.Year / @criminal.PlaceOfBirth</p>
+            <p>Hair / Eyes: @criminal.Hair / @criminal.Eyes</p>
+            <p>Height / Weight: @criminal.Height / @criminal.Weight</p>
+            <!-- Add more information as needed -->
+        </div>
+        }
+    </div>
+</div>
