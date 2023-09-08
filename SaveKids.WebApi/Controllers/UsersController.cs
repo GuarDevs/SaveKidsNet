@@ -26,12 +26,12 @@ public class UsersController : BaseController
         => Ok(await _userService.ModifyAsync(dto));
 
 
-    [HttpPatch("Delete/{i:long}")]
+    [HttpPatch("Delete/{id:long}")]
     public async Task<IActionResult> DeleteAsync(long id)
         => Ok(await _userService.RemoveAsync(id));
 
 
-    [HttpDelete("Destroy/{i:long}")]
+    [HttpDelete("Destroy/{id:long}")]
     public async Task<IActionResult> DestroyAsync(long id)
         => Ok(await _userService.DestroyAsync(id));
 
