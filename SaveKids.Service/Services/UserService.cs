@@ -109,14 +109,12 @@ public class UserService : IUserService
     {
         var theUser = await _repository.GetAsync(u => 
                            u.Email.ToLower().Equals(email.ToLower()));
-
         if (theUser is null)
-            throw new NotFoundException("Email is incorrect.");
+            throw new NotFoundException("Email is not found");
 
         var isValid = PasswordHash.Verify(theUser.Password, password);
-
         if(!isValid)
-            throw new NotFoundException("Password is incorrect.");
+            throw new CustomException("Password or telnumber is incorrect.");
 
         return _mapper.Map<UserResultDto>(theUser);
     }
@@ -135,4 +133,16 @@ public class UserService : IUserService
         => _repository.GetAll().Any(u => 
             u.Email.ToLower().Equals(user.Email.ToLower()) || 
             u.TelNumber.Equals(user.TelNumber));
+
+    public async Task<UserResultDto> UpgradeUserRoleAsync(long userId, UserRole role)
+    {
+        var user = await _repository.GetAsync(u => u.Id.Equals(userId));
+        if (user is null)
+            throw new NotFoundException("Not found any user with such id.");
+
+        user.Role = role;
+        await _repository.SaveAsync();
+
+        return _mapper.Map<UserResultDto>(user);
+    }
 }

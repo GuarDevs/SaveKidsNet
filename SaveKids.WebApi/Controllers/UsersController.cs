@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SaveKids.Domain.Configurations;
+using SaveKids.Domain.Enums;
 using SaveKids.Service.DTOs.Users;
 using SaveKids.Service.Interfaces;
 
@@ -41,6 +43,7 @@ public class UsersController : BaseController
         => Ok(await _userService.RetrieveByIdAsync(id));
 
 
+    [Authorize(Roles = "Admin")]
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAllAsync([FromQuery] PaginationParams paginationParams)
         => Ok(await _userService.RetrieveAllAsync(paginationParams));
@@ -49,4 +52,10 @@ public class UsersController : BaseController
     [HttpGet("GetByEmailAndPassword")]
     public async Task<IActionResult> GetByEmailAndPassword(string email, string password)
         => Ok(await _userService.RetrieveByEmailAndPasswordAsync(email, password));
+
+
+    [HttpPatch("update-role")]
+    public async Task<IActionResult> UpdateUserRoleAsync(long id, UserRole role)
+        => Ok(await _userService.UpgradeUserRoleAsync(id,role));
+
 }
