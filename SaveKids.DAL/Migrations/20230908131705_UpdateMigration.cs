@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace SaveKids.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class initialcreate : Migration
+    public partial class UpdateMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -135,14 +135,19 @@ namespace SaveKids.DAL.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Criminals",
+                columns: new[] { "Id", "AttachmentId", "CreatedAt", "DateOfBirth", "Detail", "Eyes", "FirstName", "Gender", "Hair", "Height", "IsDeleted", "LastName", "Nationatily", "PlaceOfBirth", "UpdatedAt", "Weight" },
+                values: new object[] { 1L, null, new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(5064), new DateTime(1964, 9, 6, 19, 0, 0, 0, DateTimeKind.Utc), "Fields II has a scar on his chest, his groin, his left calf, on both legs and both knees. He also has a tribal print tattoo on his right shoulder.", "Hazel", "Donald", "Male", "Brown", 180.0, false, "Eugene Fields II", "White American", "Kentucky", null, 90.0 });
+
+            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedAt", "DateOfBirth", "Email", "FirstName", "IsDeleted", "LastName", "Password", "Role", "TelNumber", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9415), new DateTime(2024, 11, 5, 19, 0, 0, 0, DateTimeKind.Utc), "mansurjonmoydinov16072002@gmail.com", "Mansurjon", false, "Mo'ydinov", "mansurjon1512", 1, "+998908515979", null },
-                    { 2L, new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9419), new DateTime(2024, 1, 7, 19, 0, 0, 0, DateTimeKind.Utc), "turdiyevgmail.com", "Muhammadqodir", false, "Turdiyev", "mansurjon1512", 2, "+998912031759", null },
-                    { 3L, new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9422), new DateTime(2024, 12, 3, 19, 0, 0, 0, DateTimeKind.Utc), "jasurbek@gmail.com", "Nurullo", false, "Nurmatov", "mansurjon1512", 3, "+99890335578900", null },
-                    { 4L, new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9426), new DateTime(1999, 11, 3, 19, 0, 0, 0, DateTimeKind.Utc), "saidkamolgmail.com", "Saidkamol", false, "Saidjamolov", "mansurjon1512", 3, "+998908515979", null }
+                    { 1L, new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(4901), new DateTime(2024, 11, 5, 19, 0, 0, 0, DateTimeKind.Utc), "mansurjonmoydinov16072002@gmail.com", "Mansurjon", false, "Mo'ydinov", "mansurjon1512", 1, "+998908515979", null },
+                    { 2L, new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(4907), new DateTime(2024, 1, 7, 19, 0, 0, 0, DateTimeKind.Utc), "turdiyevgmail.com", "Muhammadqodir", false, "Turdiyev", "mansurjon1512", 2, "+998912031759", null },
+                    { 3L, new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(4910), new DateTime(2024, 12, 3, 19, 0, 0, 0, DateTimeKind.Utc), "jasurbek@gmail.com", "Nurullo", false, "Nurmatov", "mansurjon1512", 3, "+99890335578900", null },
+                    { 4L, new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(4913), new DateTime(1999, 11, 3, 19, 0, 0, 0, DateTimeKind.Utc), "saidkamolgmail.com", "Saidkamol", false, "Saidjamolov", "mansurjon1512", 3, "+998908515979", null }
                 });
 
             migrationBuilder.CreateIndex(

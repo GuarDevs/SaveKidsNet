@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SaveKids.Domain.Configurations;
 using SaveKids.Domain.Enums;
@@ -34,7 +33,7 @@ public class UsersController : BaseController
         => Ok(await _userService.RemoveAsync(id));
 
 
-    [HttpGet("DeleteUser")]
+    [HttpPatch("DeleteUser")]
     public async Task<IActionResult> DeleteUserAsync()
     {
         var id = Convert.ToInt32(HttpContext.User.FindFirstValue("Id"));

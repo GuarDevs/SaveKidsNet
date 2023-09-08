@@ -44,6 +44,6 @@ public class UsersController : Controller
     public async Task<IActionResult> Create(UserCreationDto dto)
     {
         var result = await this.userService.AddAsync(dto);
-        return RedirectToAction("Index");
+        return RedirectToAction("Login");
     }
 }

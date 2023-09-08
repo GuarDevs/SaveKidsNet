@@ -17,7 +17,7 @@ namespace SaveKids.DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -177,6 +177,25 @@ namespace SaveKids.DAL.Migrations
                     b.HasIndex("AttachmentId");
 
                     b.ToTable("Criminals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(5064),
+                            DateOfBirth = new DateTime(1964, 9, 6, 19, 0, 0, 0, DateTimeKind.Utc),
+                            Detail = "Fields II has a scar on his chest, his groin, his left calf, on both legs and both knees. He also has a tribal print tattoo on his right shoulder.",
+                            Eyes = "Hazel",
+                            FirstName = "Donald",
+                            Gender = "Male",
+                            Hair = "Brown",
+                            Height = 180.0,
+                            IsDeleted = false,
+                            LastName = "Eugene Fields II",
+                            Nationatily = "White American",
+                            PlaceOfBirth = "Kentucky",
+                            Weight = 90.0
+                        });
                 });
 
             modelBuilder.Entity("SaveKids.Domain.Entities.Users.User", b =>
@@ -225,7 +244,7 @@ namespace SaveKids.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9415),
+                            CreatedAt = new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(4901),
                             DateOfBirth = new DateTime(2024, 11, 5, 19, 0, 0, 0, DateTimeKind.Utc),
                             Email = "mansurjonmoydinov16072002@gmail.com",
                             FirstName = "Mansurjon",
@@ -238,7 +257,7 @@ namespace SaveKids.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            CreatedAt = new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9419),
+                            CreatedAt = new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(4907),
                             DateOfBirth = new DateTime(2024, 1, 7, 19, 0, 0, 0, DateTimeKind.Utc),
                             Email = "turdiyevgmail.com",
                             FirstName = "Muhammadqodir",
@@ -251,7 +270,7 @@ namespace SaveKids.DAL.Migrations
                         new
                         {
                             Id = 3L,
-                            CreatedAt = new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9422),
+                            CreatedAt = new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(4910),
                             DateOfBirth = new DateTime(2024, 12, 3, 19, 0, 0, 0, DateTimeKind.Utc),
                             Email = "jasurbek@gmail.com",
                             FirstName = "Nurullo",
@@ -264,7 +283,7 @@ namespace SaveKids.DAL.Migrations
                         new
                         {
                             Id = 4L,
-                            CreatedAt = new DateTime(2023, 9, 7, 20, 49, 51, 544, DateTimeKind.Utc).AddTicks(9426),
+                            CreatedAt = new DateTime(2023, 9, 8, 13, 17, 5, 798, DateTimeKind.Utc).AddTicks(4913),
                             DateOfBirth = new DateTime(1999, 11, 3, 19, 0, 0, 0, DateTimeKind.Utc),
                             Email = "saidkamolgmail.com",
                             FirstName = "Saidkamol",
