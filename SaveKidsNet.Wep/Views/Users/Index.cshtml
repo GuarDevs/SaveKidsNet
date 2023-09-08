@@ -1,2 +1,67 @@
-﻿<h1>Hello</h1>
+﻿@using SaveKids.Service.DTOs.Users;
+@using static System.Net.WebRequestMethods;
+@model IEnumerable<UserResultDto>;
 
+<h2 class="text-uppercase text-container">users list</h2>
+<br />
+<table class="table">
+    <thead>
+        <tr class="header-color">
+            @{
+                var temp = Model.FirstOrDefault();
+            }
+            <th>@Html.DisplayNameFor(item => temp.Id)</th>
+            <th class="vertical-line">@Html.DisplayNameFor(item => temp.FirstName) </th>
+            <th class="vertical-line">@Html.DisplayNameFor(item => temp.LastName)</th>
+            <th class="vertical-line">@Html.DisplayNameFor(item => temp.Email)</th>
+            <th class="vertical-line">@Html.DisplayNameFor(item => temp.DateOfBirth)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr class="odd-row">
+                    <th>
+                        @Html.DisplayFor(i => item.Id)
+                    </th>
+                    <th class="vertical-line">
+                        @Html.DisplayFor(i => item.FirstName)
+                    </th>
+                    <th class="vertical-line">
+                        @Html.DisplayFor(i => item.LastName)
+                    </th>
+                    <th class="vertical-line">
+                        @Html.DisplayFor(i => item.Email)
+                    </th>
+                    <th class="vertical-line" style="background-color: #d9d9d9;">
+                        @Html.DisplayFor(i => item.DateOfBirth)
+                    </th>
+                </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .text-container {
+        text-align: center;
+        text-decoration-color: #D5FFD0;
+        background-color: #e8f1fc;
+    }
+
+    .header-color {
+        color: #D5FFD0;
+        background-color: #0C356A;
+    }
+
+    .even-row {
+        background-color: #e8f1fc;
+    }
+
+    .odd-row {
+        background-color: #ffffff;
+    }
+
+    .vertical-line {
+        border-left: 1px solid black;
+    }
+</style>

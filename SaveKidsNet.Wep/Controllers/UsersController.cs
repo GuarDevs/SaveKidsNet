@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SaveKids.Domain.Configurations;
 using SaveKids.Service.DTOs.Users;
 using SaveKids.Service.Interfaces;
 using SaveKidsNet.Wep.Models;
@@ -13,9 +14,13 @@ public class UsersController : Controller
         this.userService = userService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        PaginationParams pagination = new PaginationParams();
+        pagination.PageIndex = 1;
+        pagination.PageSize = 20;
+        var users = await this.userService.RetrieveAllAsync(pagination);
+        return View(users);
     }
 
     public IActionResult Login()
