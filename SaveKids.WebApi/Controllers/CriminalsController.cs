@@ -42,12 +42,12 @@ public class CriminalsController : BaseController
         => Ok(await _criminalService.ModifyAsync(dto));
 
 
-    [HttpPatch("Delete/{i:long}")]
+    [HttpPatch("Delete/{id:long}")]
     public async Task<IActionResult> DeleteAsync(long id)
         => Ok(await _criminalService.RemoveAsync(id));
 
 
-    [HttpDelete("Destroy/{i:long}")]
+    [HttpDelete("Destroy/{id:long}")]
     public async Task<IActionResult> DestroyAsync(long id)
         => Ok(await _criminalService.DestroyAsync(id));
 

@@ -25,7 +25,7 @@ public class CrimeCategoriesController : BaseController
         => Ok(await _crimeCategoryService.ModifyAsync(dto));
 
 
-    [HttpDelete("Destroy/{i:long}")]
+    [HttpDelete("Destroy/{id:long}")]
     public async Task<IActionResult> DestroyAsync(long id)
         => Ok(await _crimeCategoryService.DestroyAsync(id));
 
