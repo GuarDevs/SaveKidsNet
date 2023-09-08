@@ -11,37 +11,42 @@
                             <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
                             <form asp-action="Create" asp-controller="Users" method="post">
+                                <div class="col">
+                                    <div class="form-outline mb-4">
+                                        <label asp-for="FirstName" class="form-label" for="form3Example1cg"></label>
+                                        <input asp-for="FirstName" type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                                    </div>
 
-                                <div class="form-outline mb-4">
-                                    <label asp-for="FirstName" class="form-label" for="form3Example1cg"></label>
-                                    <input asp-for="FirstName" type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                                </div>
+                                    <div class="form-outline mb-4">
+                                        <label asp-for="LastName" class="form-label" for="form3Example3cg"></label>
+                                        <input asp-for="LastName" type="text" id="form3Example3cg" class="form-control form-control-lg" />
+                                    </div>
 
-                                <div class="form-outline mb-4">
-                                    <label asp-for="LastName" class="form-label" for="form3Example3cg"></label>
-                                    <input asp-for="LastName" type="text" id="form3Example3cg" class="form-control form-control-lg" />
+                                    <div class="form-outline mb-4">
+                                        <label asp-for="TelNumber" class="form-label" for="form3Example4cg"></label>
+                                        <input asp-for="TelNumber" type="text" id="form3Example4cg" class="form-control form-control-lg" />
+                                    </div>
                                 </div>
+                                
 
-                                <div class="form-outline mb-4">
-                                    <label asp-for="TelNumber" class="form-label" for="form3Example4cg"></label>
-                                    <input asp-for="TelNumber" type="text" id="form3Example4cg" class="form-control form-control-lg" />
-                                </div>
+                                <div class="col">
+                                    <div class="form-outline mb-4">
+                                        <label asp-for="DateOfBirth" class="form-label" for="form3Example4cdg"></label>
+                                        <input asp-for="DateOfBirth" type="date" id="form3Example4cdg" class="form-control form-control-lg" />
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label asp-for="Email" class="form-label" for="form3Example4cdg"></label>
+                                        <input asp-for="Email" type="email" id="form3Example4cdg" class="form-control form-control-lg" />
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label asp-for="Password" class="form-label" for="form3Example4cdg"></label>
+                                        <input asp-for="Password" type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                                    </div>
 
-                                <div class="form-outline mb-4">
-                                    <label asp-for="DateOfBirth" class="form-label" for="form3Example4cdg"></label>
-                                    <input asp-for="DateOfBirth" type="date" id="form3Example4cdg" class="form-control form-control-lg" />
+                                    <div class="d-flex justify-content-center">
+                                    </div>
                                 </div>
-                                <div class="form-outline mb-4">
-                                    <label asp-for="Email" class="form-label" for="form3Example4cdg"></label>
-                                    <input asp-for="Email" type="email" id="form3Example4cdg" class="form-control form-control-lg" />
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <label asp-for="Password" class="form-label" for="form3Example4cdg"></label>
-                                    <input asp-for="Password" type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                                </div>
-
-                                <div class="d-flex justify-content-center">
-                                </div>
+                                
                                 <button asp-action="Create"
                                         class="btn btn-block btn-lg gradient-custom-4 text-body" style="width:100%; background-color:#279EFF">
                                     Register
