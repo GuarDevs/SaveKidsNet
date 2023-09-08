@@ -1,5 +1,5 @@
-﻿using SaveKids.Domain.Commons;
-using SaveKids.Domain.Enums;
+﻿using SaveKids.Domain.Enums;
+using SaveKids.Domain.Commons;
 
 namespace SaveKids.Domain.Entities.Users;
 

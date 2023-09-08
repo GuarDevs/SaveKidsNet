@@ -1,5 +1,4 @@
-﻿using SaveKids.Domain.Entities.Crimes;
-using SaveKids.Service.DTOs.Crimes;
+﻿using SaveKids.Service.DTOs.Crimes;
 
 namespace SaveKids.Service.DTOs.CrimeCategories;
 

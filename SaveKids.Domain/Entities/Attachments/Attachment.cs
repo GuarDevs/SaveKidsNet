@@ -1,5 +1,4 @@
 ﻿using SaveKids.Domain.Commons;
-using System.IO.Enumeration;
 
 namespace SaveKids.Domain.Entities.Attachments;
 

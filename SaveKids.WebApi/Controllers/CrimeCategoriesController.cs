@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SaveKids.Service.Interfaces;
 using SaveKids.Domain.Configurations;
 using SaveKids.Service.DTOs.CrimeCategories;
-using SaveKids.Service.Interfaces;
 
 namespace SaveKids.WebApi.Controllers;
 

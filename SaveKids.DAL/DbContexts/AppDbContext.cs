@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SaveKids.Domain.Entities.Attachments;
+using SaveKids.Domain.Entities.Users;
 using SaveKids.Domain.Entities.Crimes;
 using SaveKids.Domain.Entities.Criminals;
-using SaveKids.Domain.Entities.Users;
+using SaveKids.Domain.Entities.Attachments;
 
 namespace SaveKids.DAL.DbContexts;
 
