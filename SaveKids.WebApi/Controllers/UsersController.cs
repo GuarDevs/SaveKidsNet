@@ -28,12 +28,12 @@ public class UsersController : BaseController
 
 
     [Authorize(Roles = "SuperAdmin,Admin")]
-    [HttpPatch("Delete/{id:long}")]
+    [HttpDelete("Delete/{id:long}")]
     public async Task<IActionResult> DeleteAsync(long id)
         => Ok(await _userService.RemoveAsync(id));
 
 
-    [HttpPatch("DeleteUser")]
+    [HttpDelete("DeleteUser")]
     public async Task<IActionResult> DeleteUserAsync()
     {
         var id = Convert.ToInt32(HttpContext.User.FindFirstValue("Id"));
